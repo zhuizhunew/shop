@@ -1,0 +1,39 @@
+<div style="width: 100%">
+  <div style="width: 100%">
+    <div style="float: left;height: 50px;line-height: 50px;text-align: center;width: 90%">{{buyItem.displayName}}</div>
+    <button style="float: right;height: 50px;width: 10%" (click)="viewCtrl.dismiss()">close</button>
+  </div>
+  <div style="width: 100%">
+    <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+         (click)="buyItem.minusBuyNormalCount()">minus
+    </div>
+    <div style="float: left;width: 40%;height: 50px;line-height: 50px;text-align: center;">
+      <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: right;">normal</div>
+      <input style="float: left;width: 50%;height: 50px;margin: auto;position: relative;text-align: center"
+             type="number" [ngModel]="buyItem.getBuyNormalCount()" id="normal{{uuid}}"/>
+    </div>
+    <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+         (click)="buyItem.addBuyNormalCount()">add
+    </div>
+    <div style="float: left;width: 10%;height: 50px;line-height: 50px;text-align: center;"
+         (click)="buyItem.setBuyNormalCount(0)">remove
+    </div>
+  </div>
+  <div style="width: 100%">
+    <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+         (click)="buyItem.minusBuyLargeCount()">minus
+    </div>
+    <div style="float: left;width: 40%;height: 50px;line-height: 50px;text-align: center;">
+      <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: right;">large</div>
+      <input style="float: left;width: 50%;height: 50px;margin: auto;position: relative;text-align: center"
+             type="number" [ngModel]="buyItem.getBuyLargeCount()" id="large{{uuid}}"/>
+    </div>
+    <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+         (click)="buyItem.addBuyLargeCount()">add
+    </div>
+    <div style="float: left;width: 10%;height: 50px;line-height: 50px;text-align: center;"
+         (click)="buyItem.setBuyLargeCount(0)">remove
+    </div>
+  </div>
+  <button style="left: 40%;width: 20%;position: relative;margin-top: 25px;height: 50px" (click)="buy()">buy</button>
+</div>

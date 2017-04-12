@@ -1,0 +1,24 @@
+<div id="content{{uuid}}" style="height: 100%;overflow-y: scroll;overflow-x: hidden;position: relative"
+     [ngStyle]="{height: height==null?'100%':(height+'px'),width:width==null?'100%':(width+'px'),top:top+'px'}">
+  <!--<div style="position: fixed;right: 10px;height: 80%;background-color: transparent;width: auto;z-index: 9999">-->
+  <div [ngStyle]="{top: getIndexTop()+'px',height:getIndexContainerHeight()+'px'}"
+       style="position: fixed;right: 10px;background-color: transparent;width: auto;z-index: 9999">
+    <div [ngStyle]="{height:getIndexHeight()+'px'}" style="text-align: center"
+         *ngFor="let j of index;trackBy:trackByFn3" (click)="go(j)">{{j.name}}
+    </div>
+  </div>
+  <ion-item-group class="item-group" *ngFor="let c of format(model);trackBy:trackByFn2" id="{{c.character+uuid}}">
+    <ion-item-divider color="light">{{c.character}}</ion-item-divider>
+    <div style="height: 50px" *ngFor="let k of c.list;trackBy:trackByFn" id="{{uuid+k.id}}"
+         (click)="select($event,k)">
+      <div style="width: 50%;float: left;text-align: left;vertical-align: middle;line-height: 50px">
+        {{k.displayName}}
+      </div>
+      <div style="width: 50%;float: right;text-align: left;vertical-align: middle;line-height: 50px">
+        {{'normal:'+k.normalPrice+" "+"large:"+k.largePrice}}
+      </div>
+    </div>
+    <!--<ion-item *ngFor="let k of c.list" (click)="select($event,k)">{{k.name}}</ion-item>-->
+  </ion-item-group>
+</div>
+

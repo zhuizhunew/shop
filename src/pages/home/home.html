@@ -1,0 +1,95 @@
+<ion-menu [content]="content" [type]="'reveal'" (ionOpen)="menuOpen($event)" (ionClose)="menuClose($event)">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Categories</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let k of categories;trackBy:trackByFn" (click)="getItems(k)">
+        {{k.name}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="content{{uuid}}" #content style="overflow: hidden ">
+  <div id="header{{uuid}}" style="position: fixed;width: 100%">
+    <button style="float: left;width: 15%;text-align: center;vertical-align: middle;line-height: 58px"
+            (click)="openMenu()">Categories
+    </button>
+    <ion-searchbar style="float: right;width: 85%" [animated]="true" [autocomplete]="true" (ionInput)="search($event)" [(ngModel)]="keyword"></ion-searchbar>
+  </div>
+  <index-list [model]="filterModel()" [height]="height" [width]="width" [top]="top"
+              (itemClick)="itemClick($event)"></index-list>
+  <!--<div style="height: 200px;width:100%;background-color: #32db64;position: fixed;z-index: 999999999" (click)="openList()"-->
+  <!--[ngStyle]="{bottom: footerHeight+infoHeight+'px'}">123-->
+  <!--</div>-->
+
+  <div
+    style="background-color:white;position: fixed;overflow-y: scroll;overflow-x: hidden;z-index: 999999999;width: 100%;max-height: 0"
+    [ngStyle]="{bottom:infoHeight+footerHeight+'px'}" id="bottompopover{{uuid}}">
+    <div style="width: 100%;height: auto" *ngFor="let category of buyItems;trackBy:trackByFnCategory" >
+      <div
+        style="width: 100%;height: 50px;line-height: 50px;text-align: center;vertical-align: middle;background-color: cornflowerblue">
+        {{category.name}}
+      </div>
+      <div style="width: 100%;height: 100px" *ngFor="let buyItem of category.items;trackBy:trackByFnItem">
+        <div
+          style="width: 10%;height:100px;line-height: 100px;text-align: center;vertical-align: middle;float: left;white-space: nowrap">
+          {{buyItem.displayName}}
+        </div>
+        <div style="width: 90%;float: left;height: 100px">
+          <div style="width: 100%;display: block">
+            <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+                 (click)="minusBuyNormalCount(buyItem)">minus
+            </div>
+            <div style="float: left;width: 40%;height: 50px;line-height: 50px;text-align: center;">
+              <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: right;">normal</div>
+              <input style="float: left;width: 50%;height: 50px;margin: auto;position: relative;text-align: center"
+                     type="number" [ngModel]="buyItem.getBuyNormalCount()" id="normal{{uuid}}"/>
+            </div>
+            <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+                 (click)="addBuyNormalCount(buyItem)">add
+            </div>
+            <div style="float: left;width: 10%;height: 50px;line-height: 50px;text-align: center;"
+                 (click)="setBuyNormalCount(0,buyItem)">remove
+            </div>
+          </div>
+
+          <div style="width: 100%;float: left;">
+            <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+                 (click)="minusBuyLargeCount(buyItem)">minus
+            </div>
+            <div style="float: left;width: 40%;height: 50px;line-height: 50px;text-align: center;">
+              <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: right;">normal</div>
+              <input style="float: left;width: 50%;height: 50px;margin: auto;position: relative;text-align: center"
+                     type="number" [ngModel]="buyItem.getBuyLargeCount()" id="large{{uuid}}"/>
+            </div>
+            <div style="float: left;width: 25%;height: 50px;line-height: 50px;text-align: center;"
+                 (click)="addBuyLargeCount(buyItem)">add
+            </div>
+            <div style="float: left;width: 10%;height: 50px;line-height: 50px;text-align: center;"
+                 (click)="setBuyLargeCount(0,buyItem)">remove
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="buyItems==null||buyItems.length<=0" style="width: 100%;height: 100px;text-align: center;vertical-align: middle;line-height: 100px;background-color: cornflowerblue">Nothing in Shopping Cart!</div>
+
+  </div>
+
+  <div style="background-color: #387ef5;position: relative;" [ngStyle]="{height: infoHeight+'px',top:top+'px'}">
+    <div (click)="openList()" style="width: 70%;text-align: center;float: left"
+         [ngStyle]="{height:infoHeight+'px','line-height':infoHeight+'px'}">{{itemCount+" Items,Total "+sum+" RMB"}}
+    </div>
+    <button [ngStyle]="{height:infoHeight+'px','line-height':infoHeight+'px'}" style="width: 30%;float: right"
+            (click)="check()">check
+    </button>
+  </div>
+</ion-content>
+
+

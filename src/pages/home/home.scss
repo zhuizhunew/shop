@@ -1,0 +1,60 @@
+page-home {
+
+}
+
+//@keyframes popovershow {
+//  from {
+//    max-height: 0;
+//  }
+//  to {
+//    max-height: 500px;
+//  }
+//}
+
+//@keyframes popoverhide {
+//  from {
+//    max-height: 500px;
+//  }
+//  to {
+//    max-height: 0px;
+//  }
+//}
+
+@-webkit-keyframes popoverhide /* Safari 和 Chrome */
+{
+  from {
+    max-height: 475px;
+  }
+  to {
+    max-height: 0px;
+  }
+
+}
+
+@-webkit-keyframes popovershow /* Safari 和 Chrome */
+{
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 475px;
+  }
+
+}
+
+.bottom-popover-hide {
+  max-height: 0!important;
+  animation: popoverhide 1s;
+  -moz-animation: popoverhide 1s; /* Firefox */
+  -webkit-animation: popoverhide 1s; /* Safari 和 Chrome */
+  -o-animation: popoverhide 1s; /* Opera */
+}
+
+.bottom-popover-show {
+  max-height: 475px!important;
+  animation: popovershow 1s;
+  -moz-animation: popovershow 1s; /* Firefox */
+  -webkit-animation: popovershow 1s; /* Safari 和 Chrome */
+  -o-animation: popovershow 1s; /* Opera */
+
+}
