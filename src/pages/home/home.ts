@@ -9,6 +9,7 @@ import {Item} from "../../models/Item";
 import {AddCartPage} from "../addCart/addCart";
 import {ShoppingCartListener} from '../../interfaces/ShoppingCartListener'
 import {BuyItem} from "../../models/BuyItem";
+import {Router} from 'emiya-ionic2-router';
 
 @Component({
   selector: 'page-home',
@@ -37,7 +38,8 @@ export class HomePage implements ShoppingCartListener {
   buyItems: Category[];
   keyword: string = ""
 
-  constructor(public navCtrl: NavController, public remote: Remote, public ref: ChangeDetectorRef, public menu: MenuController, public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public local: Local) {
+  constructor(public navCtrl: NavController, public remote: Remote, public ref: ChangeDetectorRef, public menu: MenuController,
+              public loadingCtrl: LoadingController, public popoverCtrl: PopoverController, public local: Local, private router: Router) {
     //window.localStorage.clear()
     this.loading.present();
     remote.getCategory().then(res => {
@@ -253,7 +255,7 @@ export class HomePage implements ShoppingCartListener {
   }
 
   check() {
-
+    this.router['push']('order');
   }
 
   search(key) {

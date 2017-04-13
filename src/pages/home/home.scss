@@ -43,7 +43,7 @@ page-home {
 }
 
 .bottom-popover-hide {
-  max-height: 0!important;
+  max-height: 0 !important;
   animation: popoverhide 1s;
   -moz-animation: popoverhide 1s; /* Firefox */
   -webkit-animation: popoverhide 1s; /* Safari 和 Chrome */
@@ -51,10 +51,18 @@ page-home {
 }
 
 .bottom-popover-show {
-  max-height: 475px!important;
+  max-height: 475px !important;
   animation: popovershow 1s;
   -moz-animation: popovershow 1s; /* Firefox */
   -webkit-animation: popovershow 1s; /* Safari 和 Chrome */
   -o-animation: popovershow 1s; /* Opera */
 
+}
+
+ion-backdrop {
+  opacity: 0.5 !important;
+}
+
+.popover-md .popover-viewport {
+  opacity: 1;
 }

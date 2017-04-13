@@ -1,0 +1,189 @@
+<!--
+  Generated template for the Order page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <div>
+    <span (click)="goBack()"><img src="../../assets/image/arrow_left_b.png" alt=""></span>
+    <span>订单</span>
+    <span></span>
+  </div>
+</ion-header>
+
+<!--<header title="订单" showBack="true"></header>-->
+
+<ion-content *ngIf="sum == 0">
+  <p style="text-align: center;font-size: 20px">空订单</p>
+</ion-content>
+
+<ion-content *ngIf="sum > 0">
+  <div class="customer">
+    <div class="customers">客户联系人</div>
+    <div class="customer-item">
+      <span><input type="checkbox" checked="true"></span>
+      <span><em>陈建新</em><em>13985618107</em></span>
+    </div>
+  </div>
+
+  <div class="customer">
+    <div class="customers">收货信息</div>
+    <div class="customer-item">
+      <span><input type="checkbox" checked="true"></span>
+      <span><em>陈建新，</em><em>13985618107，贵州六盘水</em></span>
+    </div>
+  </div>
+
+
+  <div class="goods">
+    <div class="goods-item">
+    <span class="goods-name">
+      <em class="goods-category">产品</em>
+      <em>花型名称</em>
+    </span>
+      <span>
+      <span class="goods-info">
+        <span class="standard">标准</span>
+        <span class="count-number">
+          <em class="count">数量</em>
+          <em class="count">价格</em>
+        </span>
+      </span>
+      <span class="goods-info">
+        <span class="standard">加大</span>
+        <span class="count-number">
+          <em class="count">数量</em>
+          <em class="count">价格</em>
+        </span>
+      </span>
+    </span>
+    </div>
+    <!--<div>-->
+    <!--<div class="goods-content">-->
+    <!--<span>-->
+    <!--<em class="category">斯维尔</em>-->
+    <!--<em>典雅(冰兰)</em>-->
+    <!--</span>-->
+    <!--<span class="count-number">-->
+    <!--<em class="count">1</em>-->
+    <!--<em class="count">180.0</em>-->
+    <!--<em class="count">1</em>-->
+    <!--<em class="count">200.0</em>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--<div class="goods-content">-->
+    <!--<span>-->
+    <!--<em class="category">德菲丝</em>-->
+    <!--<em>梵花恋人（粉玉）</em>-->
+    <!--</span>-->
+    <!--<span class="count-number">-->
+    <!--<em class="count">1</em>-->
+    <!--<em class="count">180.0</em>-->
+    <!--<em class="count">1</em>-->
+    <!--<em class="count">200.0</em>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <div *ngFor="let item of order_data" class="goods-content-box">
+      <div class="goods-content" *ngFor="let obj of item.items">
+        <span>
+          <em class="category">{{item.id}}</em>
+          <em>{{obj.displayName}}</em>
+        </span>
+        <span class="count-number">
+          <em class="count">{{obj._buyNormalCount}}</em>
+          <em class="count">{{obj.normalPrice}}</em>
+          <em class="count">{{obj._buyLargeCount}}</em>
+          <em class="count">{{obj.largePrice}}</em>
+        </span>
+      </div>
+      <!--<div class="goods-content">-->
+      <!--<span>-->
+      <!--<em class="category">德菲丝</em>-->
+      <!--<em>梵花恋人（粉玉）</em>-->
+      <!--</span>-->
+      <!--<span class="count-number">-->
+      <!--<em class="count">1</em>-->
+      <!--<em class="count">180.0</em>-->
+      <!--<em class="count">1</em>-->
+      <!--<em class="count">200.0</em>-->
+      <!--</span>-->
+      <!--</div>-->
+    </div>
+
+
+  </div>
+  <div class="pay-way">
+    <span class="title">付款方式</span>
+    <span>
+      <span class="pay-item">
+        <em>现金: <input type="radio" name="A" checked="true"></em>
+      </span>
+      <span class="pay-item">
+        <em>刷卡: <input type="radio" name="A"></em>
+      </span>
+      <span class="pay-item">
+        <em>信用: <input type="radio" name="A"></em>
+      </span>
+      <span class="pay-item">
+        <em>汇款: <input type="radio" name="A"></em>
+      </span>
+      <span class="pay-item">
+        <em>预付款: <input type="radio" name="A"></em>
+      </span>
+    </span>
+  </div>
+  <div class="pay-information">
+    <span class="title">付款信息</span>
+    <span style="width: 100%">
+      <span class="infor-item">
+        <em>配送方式:</em>
+        <ion-select>
+          <ion-option selected="true">物流1</ion-option>
+          <ion-option>物流2</ion-option>
+          <ion-option>物流3</ion-option>
+        </ion-select></span>
+      <span class="infor-item">
+        <em>运费支付:</em>
+        <em><input type="radio" name="B">运费到付</em>
+        <em style="margin-left: 20px"><input type="radio" name="B" checked="true">运费现付</em>
+      </span>
+      <span class="infor-item">
+        <em>订单金额:</em>
+        <em>￥{{sum}}</em>
+      </span>
+      <span class="infor-item">
+        <em>应付金额:</em>
+        <em>￥{{sum}}</em>
+      </span>
+      <span class="infor-item">
+        <em>实付金额:</em>
+        <em><input type="text" class="amount"></em>
+      </span>
+      <span class="infor-item">
+        <em>出库仓库:</em>
+        <ion-select>
+          <ion-option selected="true">仓库1</ion-option>
+          <ion-option>仓库2</ion-option>
+          <ion-option>仓库3</ion-option>
+        </ion-select>
+      </span>
+      <span class="infor-item">
+        <em>折扣金额:</em>
+        <em></em>
+      </span>
+    </span>
+  </div>
+  <div class="other-information">
+    <span>备注信息</span>
+    <span><textarea name="" id="" cols="30" rows="3"></textarea></span>
+  </div>
+  <div class="submit-order">
+    <!--<custom-counter [(counter)]="newValue"></custom-counter>-->
+    <button ion-button>继续点单</button>
+    <button ion-button (click)="submit()">提交审核</button>
+  </div>
+</ion-content>

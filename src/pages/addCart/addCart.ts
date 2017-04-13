@@ -83,6 +83,7 @@ export class AddCartPage {
   }
 
   buy() {
+    // console.log(123);
     let r = new Array<BuyItem>();
     r.push(this.buyItem);
     this.local.putToShoppingCart(r, Local.MODIFY_SHOPPINGCART)

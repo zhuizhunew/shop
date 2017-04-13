@@ -15,6 +15,10 @@ import {IndexList} from '../components/index-list/index-list'
 import {HttpModule} from "@angular/http";
 import {Remote} from '../Services/Remote'
 import {Local} from '../Services/Local'
+import {CartPage} from "../pages/cart/cart";
+import {Counter} from "../components/counter/counter";
+import {OrderPage} from "../pages/order/order";
+import {Router} from 'emiya-ionic2-router';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,15 @@ import {Local} from '../Services/Local'
     ContactPage,
     HomePage,
     TabsPage,
-    IndexList
+    IndexList,
+    CartPage,
+    Counter,
+    OrderPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {popoverEnter: 'popover-pop-in'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,14 +44,18 @@ import {Local} from '../Services/Local'
     ContactPage,
     HomePage,
     TabsPage,
-    IndexList
+    IndexList,
+    CartPage,
+    Counter,
+    OrderPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Remote,
-    Local
+    Local,
+    Router
   ]
 })
 export class AppModule {

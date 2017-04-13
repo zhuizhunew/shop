@@ -1,0 +1,137 @@
+<!--
+  Generated template for the Cart page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <div>购物车</div>
+</ion-header>
+
+
+<ion-content>
+  <div class="cart-title">
+    <span class="one">产品</span>
+    <span class="two">花型名称</span>
+    <span class="one">标准数量</span>
+    <span class="one">加大数量</span>
+    <span class="three">移除</span>
+  </div>
+  <div>
+
+    <!--<div class="cart-item-two" *ngFor="let item of cart_data">-->
+      <!--<span class="sub-item-one">{{item.product}}</span>-->
+      <!--<span class="sub-item-two">-->
+        <!--<span class="item-name" *ngFor="let sub of item.sub">-->
+          <!--<em class="one">{{sub.name}}</em>-->
+          <!--<em class="two">-->
+            <!--<custom-counter [(counter)]="sub.standard_num" (counterChange)="refresh()"></custom-counter>-->
+          <!--</em>-->
+          <!--<em class="two">-->
+            <!--<custom-counter [(counter)]="sub.bigger_num" (counterChange)="refresh()"></custom-counter>-->
+          <!--</em>-->
+          <!--<em class="five" (click)="delete(sub.id)">-->
+            <!--<img src="assets/image/del_b.png" alt="">移除-->
+          <!--</em>-->
+        <!--</span>-->
+      <!--</span>-->
+    <!--</div>-->
+
+
+    <div class="cart-item-two" *ngFor="let item of cart_data2">
+      <span class="sub-item-one">{{item.id}}</span>
+      <span class="sub-item-two">
+        <span class="item-name" *ngFor="let sub of item.items">
+          <em class="one">{{sub.displayName}}</em>
+          <em class="two">
+            <!--<custom-counter [(counter)]="sub._buyNormalCount" (counterChange)="refresh()"></custom-counter>-->
+            <div class="counter">
+              <button (click)="normalDecrement(sub)">-</button>
+              <span><input type="number" [(ngModel)]="sub._buyNormalCount"></span>
+              <button (click)="normalIncrement(sub)">+</button>
+            </div>
+          </em>
+          <em class="two">
+            <!--<custom-counter [(counter)]="sub._buyLargeCount" (counterChange)="refresh()"></custom-counter>-->
+            <div class="counter">
+              <button (click)="largeDecrement(sub)">-</button>
+              <span><input type="number" [(ngModel)]="sub._buyLargeCount"></span>
+              <button (click)="largeIncrement(sub)">+</button>
+            </div>
+          </em>
+          <em class="five" (click)="delete2(0,sub)">
+            <img src="assets/image/del_b.png" alt="">移除
+          </em>
+        </span>
+      </span>
+    </div>
+
+    <!--<div class="cart-item-two">-->
+    <!--<span class="sub-item-one">菲斯娜</span>-->
+    <!--<span class="sub-item-two">-->
+    <!--<span class="item-name">-->
+    <!--<em class="one">柔丝花恋（粉玉）</em>-->
+    <!--<em class="two">-->
+    <!--<custom-counter [(counter)]="standardNumber"></custom-counter>-->
+    <!--</em>-->
+    <!--<em class="two">-->
+    <!--<custom-counter [(counter)]="biggerNumber"></custom-counter>-->
+    <!--</em>-->
+    <!--<em class="five" (click)="delete()">-->
+    <!--<img src="assets/image/del_b.png" alt="">移除-->
+    <!--</em>-->
+    <!--</span>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--<div class="cart-item-two">-->
+    <!--<span class="sub-item-one">婵丝</span>-->
+    <!--<span class="sub-item-two">-->
+    <!--<span class="item-name">-->
+    <!--<em class="one">爱意缠绵（大红）</em>-->
+    <!--<em class="two">-->
+    <!--<custom-counter [(counter)]="standardNumber2"></custom-counter>-->
+    <!--</em>-->
+    <!--<em class="two">-->
+    <!--<custom-counter [(counter)]="biggerNumber2"></custom-counter>-->
+    <!--</em>-->
+    <!--<em class="five" (click)="delete()">-->
+    <!--<img src="assets/image/del_b.png" alt="">移除-->
+    <!--</em>-->
+    <!--</span>-->
+    <!--<span class="item-name">-->
+    <!--<em class="one">繁花盛宴（粉红）</em>-->
+    <!--<em class="two">-->
+    <!--<custom-counter [(counter)]="standardNumber3"></custom-counter>-->
+    <!--</em>-->
+    <!--<em class="two">-->
+    <!--<custom-counter [(counter)]="biggerNumber3"></custom-counter>-->
+    <!--</em>-->
+    <!--<em class="five" (click)="delete()">-->
+    <!--<img src="assets/image/del_b.png" alt="">移除-->
+    <!--</em>-->
+    <!--</span>-->
+    <!--</span>-->
+    <!--</div>-->
+  </div>
+  <!--<div class="cart-total">-->
+    <!--<span class="one">合计：</span>-->
+    <!--<span>产品数量：<em>{{cart_data.length}}</em></span>-->
+    <!--<span>购买数量：<em>{{total_amount}}</em></span>-->
+    <!--<span>产品金额：<em>￥{{total_price}}</em></span>-->
+  <!--</div>-->
+
+  <div class="cart-total">
+    <span class="one">合计：</span>
+    <span>产品数量：<em>{{cart_data2.length}}</em></span>
+    <span>购买数量：<em>{{itemCount}}</em></span>
+    <span>产品金额：<em>￥{{sum}}</em></span>
+  </div>
+
+  <div class="refresh-order">
+    <!--<button ion-button (click)="refresh()">更新订单</button>-->
+  </div>
+  <div class="budget">
+    <button ion-button (click)="goHome()">继续购买</button>
+    <button ion-button (click)="goCheck()">结算</button>
+  </div>
+</ion-content>

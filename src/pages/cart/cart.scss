@@ -1,0 +1,128 @@
+page-cart {
+  ion-header {
+    height: 44px;
+    line-height: 44px;
+    div {
+      text-align: center;
+      border-bottom: 1px solid rgb(149, 149, 149);
+      width: 100%
+    }
+  }
+  .scroll-content {
+    padding: 0 10px;
+    .cart-title {
+      font-size: 16px;
+      display: flex;
+      padding: 10px 0;
+      justify-content: space-between;
+      border-bottom: 1px solid rgb(149, 149, 149);
+      align-items: center;
+      .one {
+        flex: 2;
+      }
+      .two {
+        flex: 5;
+      }
+      .three {
+        flex: 1;
+      }
+      .five {
+        flex: 1;
+        background-color: red;
+        border-radius: 5px;
+        img {
+          width: 15px;
+          height: 18px;
+          vertical-align: text-top;
+        }
+      }
+    }
+    .cart-item-two {
+      font-size: 16px;
+      font-style: normal;
+      display: flex;
+      padding: 5px 0;
+      justify-content: space-between;
+      border-bottom: 1px solid rgb(149, 149, 149);
+      align-items: center;
+      .sub-item-one {
+        flex: 2;
+      }
+      .sub-item-two {
+        flex: 10;
+        .item-name {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid rgb(149, 149, 149);
+          align-items: center;
+          //padding: 5px 0;
+          &:last-child {
+            border-bottom: none;
+          }
+          em {
+            font-style: normal;
+          }
+          .five {
+            background-color: red;
+            border-radius: 5px;
+            flex: 1;
+            img {
+              width: 15px;
+              height: 18px;
+              vertical-align: text-top;
+            }
+          }
+          .one {
+            flex: 5;
+          }
+          .two {
+            flex: 2;
+            .counter {
+              input {
+                width: 30px;
+                font-size: 16px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+    .cart-total {
+      font-size: 16px;
+      text-align: left;
+      padding-left: 70%;
+      margin-top: 100px;
+      span {
+        display: block;
+        em {
+          font-style: normal;
+        }
+      }
+      .one {
+        font-size: 20px;
+        color: red;
+        padding-left: 22px;
+      }
+    }
+    .refresh-order {
+      text-align: right;
+      margin-top: 50px;
+      button {
+        height: 40px;
+        font-size: 16px;
+      }
+    }
+    .budget {
+      @extend .refresh-order;
+      margin-top: 0;
+      button {
+        background-color: #ffffff;
+        border: 1px solid rgb(149, 149, 149);
+        color: #000;
+      }
+    }
+  }
+}
