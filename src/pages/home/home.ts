@@ -123,7 +123,7 @@ export class HomePage implements ShoppingCartListener {
     this.contentDom = document.getElementById("content" + this.uuid);
     this.top = document.getElementById("header" + this.uuid).offsetHeight;
     this.footerHeight = document.getElementsByTagName("ion-tabs")[0].firstElementChild['offsetHeight'];
-    this.height = (window.screen.height - document.getElementById("header" + this.uuid).offsetHeight - this.footerHeight) - this.infoHeight;
+    this.height = (document.body.scrollHeight - document.getElementById("header" + this.uuid).offsetHeight - this.footerHeight) - this.infoHeight;
   }
 
   ngAfterViewChecked() {

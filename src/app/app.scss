@@ -14,3 +14,30 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@media only screen and (max-width:320px){
+  @media only screen and (min-width:0px){
+    html{
+      font-size: 34%;
+    }
+  }
+}
+
+@media only screen and (max-width:390px){
+  @media only screen and (min-width:321px){
+    html{
+      font-size: 39%;
+    }
+  }
+}
+
+@media only screen and (max-width:420px){
+  @media only screen and (min-width:391px){
+    html{
+      font-size: 45%;
+    }
+  }
+}
+
+
+
